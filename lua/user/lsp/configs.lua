@@ -4,8 +4,18 @@ if not status_ok then
 end
 
 local lspconfig = require("lspconfig")
+local lsp_status = require("lsp-status")
 
-local servers = { "jsonls", "sumneko_lua", "tsserver", "tailwindcss", "html", "cssls", "cssmodules_ls", "graphql", "vuels", "yamlls", "emmet_ls", "rust_analyzer", "jdtls"}
+local servers = { "jsonls", "sumneko_lua", "tsserver", "tailwindcss", "cssls", "cssmodules_ls", "vuels", "yamlls", "emmet_ls", "rust_analyzer", "jdtls", "volar"}
+
+lsp_status.config({
+    current_function = false,
+    show_filename = true,
+    diagnostics = false,
+    status_symbol = "",
+    select_symbol = nil,
+    update_interval = 200,
+})
 
 lsp_installer.setup {
 	ensure_installed = servers

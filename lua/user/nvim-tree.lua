@@ -1,3 +1,7 @@
+local function custom_callback(callback_name)
+    return string.format(":lua require('user.treeutils').%s()<CR>", callback_name)
+end
+
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
 if not status_ok then
 	return
@@ -24,10 +28,10 @@ nvim_tree.setup({
 	open_on_tab = false,
 	hijack_cursor = false,
 	update_cwd = true,
-	update_to_buf_dir = {
-	  enable = true,
-	  auto_open = true,
-	},
+	-- update_to_buf_dir = {
+	--   enable = true,
+	--   auto_open = true,
+	-- },
 	renderer = {
     root_folder_modifier = ":~",
 		indent_markers = {
@@ -116,6 +120,8 @@ nvim_tree.setup({
 				{ key = { "l", "<CR>", "o" }, cb = tree_cb("edit") },
 				{ key = "h", cb = tree_cb("close_node") },
 				{ key = "v", cb = tree_cb("vsplit") },
+        { key = "<c-f>", cb = custom_callback "launch_find_files" },
+        { key = "<c-g>", cb = custom_callback "launch_live_grep" },
 			},
 		},
 		number = false,

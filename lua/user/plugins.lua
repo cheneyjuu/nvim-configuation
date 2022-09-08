@@ -84,7 +84,18 @@ return packer.startup(function(use)
 			})
 		end,
 	})
+  use {'dsznajder/vscode-es7-javascript-react-snippets',
+    run = 'yarn install --frozen-lockfile && yarn compile'
+  }
 
+  --[[ use 'rstacruz/vim-closer' ]]
+  use 'andymass/vim-matchup'
+  use {
+    'haorenW1025/completion-nvim',
+    opt = true,
+    requires = {{'hrsh7th/vim-vsnip', opt = true}, {'hrsh7th/vim-vsnip-integ', opt = true}}
+  }
+  use 'tjdevries/colorbuddy.vim'
 	-- Colorschemes
 	-- use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
 	use("lunarvim/darkplus.nvim")
@@ -107,6 +118,7 @@ return packer.startup(function(use)
 		"petertriho/cmp-git",
 		config = "require('user.lsp.cmp-git')",
 	})
+ 	--[[ use {'tzachar/cmp-tabnine', run='./install.sh', requires = 'hrsh7th/nvim-cmp'} ]]
 	-- snippets
 	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 	-- use {'p00f/nvim-ts-rainbow', after = {'nvim-treesitter'}}
@@ -142,12 +154,8 @@ return packer.startup(function(use)
 
 	-- Git
 	use("lewis6991/gitsigns.nvim")
-
-	-- Debugger
-	use({ "mfussenegger/nvim-dap", config = "require('user.dap')" })
-	use({ "rcarriga/nvim-dap-ui", config = "require('user.dapui')" })
-
 	use("OmniSharp/omnisharp-vim")
+  use("rhysd/git-messenger.vim")
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

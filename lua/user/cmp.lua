@@ -138,7 +138,7 @@ cmp.setup({
 				buffer = "[Buffer]",
 				path = "[Path]",
 				vsnip = "[Vsnip]",
-				-- cmp_tabnine = kind_icons.Event .. "[AI]",
+				--[[ cmp_tabnine = kind_icons.Event .. "[⚡️Tabnine]", ]]
 				-- calc = "[CALC]",
 			})[entry.source.name]
 			return vim_item
@@ -146,7 +146,7 @@ cmp.setup({
 	},
 	sources = {
 		-- { name = 'calc', priority = 3 },
-		-- { name = 'cmp_tabnine', priority = 8, max_num_results = 3 },
+		--[[ { name = 'cmp_tabnine', priority = 8 }, ]]
 		{ name = "npm" },
 		{ name = "nvim_lsp", priority = 3  },
 		{ name = "luasnip", priority = 1 },
